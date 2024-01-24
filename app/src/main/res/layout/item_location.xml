@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Material3.CardView.Elevated"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false"
+    android:outlineAmbientShadowColor="#FFFFFF"
+    android:outlineSpotShadowColor="#FFFFFF"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="50dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/L_NAME"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="სახელი"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/L_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="ID"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginRight="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/L_INFO"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:layout_marginTop="5dp"
+            android:text="ინფორმაცია"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/L_ID"
+            app:layout_constraintStart_toStartOf="@+id/L_NAME"
+            app:layout_constraintTop_toBottomOf="@+id/L_NAME" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

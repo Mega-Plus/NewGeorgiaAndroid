@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "385145594726",
+    "project_id": "aplus-modules",
+    "storage_bucket": "aplus-modules.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385145594726:android:6345219a9465028fba5ea7",
+        "android_client_info": {
+          "package_name": "com.example.migeba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385145594726-i6hsbgl8ff3n8okvnvhhqrntins3sii1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD09LtuED9ETj6Mtzipb8cfDjRt6NZHxLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385145594726-i6hsbgl8ff3n8okvnvhhqrntins3sii1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

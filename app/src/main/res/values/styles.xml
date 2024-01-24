@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <style name="SlidingDialogAnimation">
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+    </style>
+
+    <style name="CollapsingHomeTitleAppearanceExpanded">
+        <item name="android:fontFamily">@font/mark_med</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="CollapsingHomeTitleAppearanceCollapsed">
+        <item name="android:fontFamily">@font/mark_med</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="CustomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">#00000000</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+</resources>

@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Modules</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="sort_ascending">ზრდადობის მიხ.</string>
+    <string name="sort_descending">კლებადობის მიხ.</string>
+    <string name="hiding_row_sample">Hiding 3. Row Sample</string>
+    <string name="showing_row_sample">Showing 3. Row Sample</string>
+    <string name="scroll_to_column_position">Scroll to 15. column position</string>
+    <string name="scroll_to_row_position">Scroll to 5. row position</string>
+    <string name="show_hide_the_column">Showing / Hiding 1. column</string>
+    <string name="table_pagination_details">Page %s, showing items %s - %s.</string>
+    <string name="migheba_editCard_1">სერია</string>
+    <string name="migheba_editCard_2">ფასი</string>
+    <string name="migheba_editCard_next">შემდეგი</string>
+    <string name="migheba_editCard_3">ვადა</string>
+    <string name="migheba_editCard_4">რაოდენობა</string>
+    <string name="migheba_editCard_save">შენახვა</string>
+    <string name="migheba_editCard_5">შტრიხკოდი</string>
+    <string name="accessibility_migheba_editCard_previous">წინა პროდუქტი</string>
+    <string name="migheba_title">მიღება</string>
+    <string name="accessibility_migheba_save">მიღების დასრულება</string>
+    <string name="migheba_edit">რედაქტ.</string>
+    <string name="accessibility_migheba_zednadebi">ზედნადების ნომერი</string>
+    <string name="inventarizacia_title">ინვენტარიზაცია</string>
+
+    <string-array name="moods">
+        <item />
+        <item>Happy</item>
+        <item>Sad</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item />
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="items_per_page">
+        <item>10</item>
+        <item>20</item>
+        <item>25</item>
+        <item>50</item>
+        <item>All</item>
+    </string-array>
+    <string name="title_activity_location_chooser">Location_chooser</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

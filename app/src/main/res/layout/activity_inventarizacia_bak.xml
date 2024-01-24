@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Inventarizacia">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/mark_reg"
+        android:text="@string/inventarizacia_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="RtlHardcoded" />
+
+    <FrameLayout
+        android:id="@+id/tableParentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp">
+
+        <ProgressBar
+            android:id="@+id/accept_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-6dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <com.evrencoskun.tableview.TableView
+            android:id="@+id/tableview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="false"
+            app:allow_click_inside_cell="true"
+            app:allow_click_inside_column_header="true"
+            app:allow_click_inside_row_header="true"
+            app:selected_color="@color/backgroundcolor_tetriary" />
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

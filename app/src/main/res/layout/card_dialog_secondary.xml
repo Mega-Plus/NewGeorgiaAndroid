@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp"
+    app:strokeWidth="0dp"
+    tools:ignore="HardcodedText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/dialog_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_delete_outline_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dialog_primaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="ნადმვილად გსურთ მთლიანი ფაქტურის წაშლა?"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_icon" />
+
+        <TextView
+            android:id="@+id/dialog_secondaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="lorem ipsum dolor sit amet, consectetur "
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/dialog_positiveButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_primaryText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dialog_secondaryEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/dialog_negativeButton"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_primaryText"
+            tools:layout_editor_absoluteX="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialog_positiveButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingLeft="23dp"
+            android:paddingRight="15dp"
+            android:text="დიახ"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_next"
+            app:iconGravity="textEnd"
+            app:iconSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialog_negativeButton"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left"
+            android:contentDescription="უკან"
+            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_back"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="?android:textColorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

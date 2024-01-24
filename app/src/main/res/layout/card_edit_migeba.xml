@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_background_card_rounded">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialog_close"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/edit_card_header"
+            android:layout_alignStart="@+id/edit_card_header"
+            android:layout_gravity="left"
+            android:contentDescription="@string/accessibility_migheba_editCard_previous"
+            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_baseline_close_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="?android:textColorPrimary" />
+
+        <!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/dialog_"-->
+<!--            style="@style/Widget.Material3.Button.OutlinedButton"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_below="@+id/edit_card_header"-->
+<!--            android:layout_alignStart="@+id/edit_card_header"-->
+<!--            android:layout_gravity="left"-->
+<!--            android:contentDescription="@string/accessibility_migheba_editCard_previous"-->
+<!--            android:gravity="center"-->
+<!--            android:insetTop="0dp"-->
+<!--            android:insetBottom="0dp"-->
+<!--            android:padding="0dp"-->
+<!--            app:backgroundTint="@color/white"-->
+<!--            app:cornerRadius="18dp"-->
+<!--            app:icon="@drawable/ic_baseline_close_24"-->
+<!--            app:iconGravity="textStart"-->
+<!--            app:iconPadding="0dp"-->
+<!--            app:iconTint="?android:textColorPrimary" />-->
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dialog_search_product"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/edit_card_header"
+            android:layout_alignBottom="@+id/dialog_close"
+            android:layout_gravity="left"
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@+id/dialog_close"
+            android:contentDescription="@string/accessibility_migheba_editCard_previous"
+            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_baseline_search_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="?android:textColorPrimary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_card_nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/edit_card_header"
+            android:layout_marginTop="70dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingLeft="23dp"
+            android:text="შესრულება"
+            app:cornerRadius="18dp" />
+
+        <RelativeLayout
+            android:id="@+id/edit_card_header"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginHorizontal="15dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_card_p_id"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="false"
+                android:gravity="center"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:iconGravity="end" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/edit_card_p_id"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/location_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="marquee"
+                    android:maxWidth="130dp"
+                    android:maxLines="3"
+                    app:autoSizeTextType="uniform"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/g_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:layout_marginTop="120dp">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edit_card_header"
+                    android:layout_marginHorizontal="15dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_edit_anagceri"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/migheba_editCard_1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/parkebis_raodenoba"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/vada"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="ვადა">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/card_edit_raodenoba"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:layout_marginTop="5dp"
+                            android:hint="რაოდენობა">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:singleLine="true" />
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <TextView
+                            android:id="@+id/expectedText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_weight="8"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true" />
+
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_edit_mwarmoebeli"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="მწარმოებელი">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_edit_raodenobayutshi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="რაოდენობა ყუთში">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_edit_qveyana"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="ქვეყანა">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_edit_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="ტემპერატურა">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/location_textinputlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="ლოკაცია"
+                            android:textColorHint="@color/black"
+                            app:boxCornerRadiusBottomEnd="13dp"
+                            app:boxCornerRadiusBottomStart="13dp"
+                            app:boxCornerRadiusTopEnd="13dp"
+                            app:boxCornerRadiusTopStart="13dp">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/location_autocomplete"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="phone"
+                                android:textColor="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_rezervi"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@+id/edit_card_header"
+                            android:layout_alignStart="@+id/edit_card_header"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="-3dp"
+                            android:layout_weight="2"
+                            android:contentDescription="რეზერვი"
+                            android:gravity="center"
+                            android:padding="0dp"
+                            android:text="რეზერვი"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="18dp"
+                            app:iconGravity="textStart"
+                            app:iconPadding="0dp"
+                            app:iconTint="?android:textColorPrimary" />
+                    </LinearLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_edit_sabechdiraodenoba"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="საბეჭდი რაოდენობა">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_edit_numerusi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="ნუმერუსი">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </FrameLayout>
+
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="600dp"/>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.UnelevatedButton"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_marginLeft="63dp"
+            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="cardEditHelperInfo"
+            android:padding="0dp"
+            android:visibility="gone"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_outline_info_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="26dp"
+            app:iconTint="?android:textColorSecondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_previous"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left"
+            android:contentDescription="@string/accessibility_migheba_editCard_previous"
+            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_back"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="?android:textColorPrimary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_seriebi_raod"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="56dp"
+            android:contentDescription="დაბეჭდვა"
+            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_outline_print_24"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="26dp"
+            app:iconTint="?android:textColorPrimary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_card_nextAndSave"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingLeft="23dp"
+            android:paddingRight="15dp"
+            android:text="@string/migheba_editCard_next"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_next"
+            app:iconGravity="textEnd"
+            app:iconSize="20dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/dialog_secondary_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <include
+            android:id="@+id/dialog_secondary"
+            layout="@layout/card_dialog_secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp" />
+    </FrameLayout>
+
+
+</FrameLayout>
+

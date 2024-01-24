@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    signingConfigs {
+        release {
+        storeFile file('/home/irakli/.android/debug.keystore')
+            keyAlias 'mezz'
+            keyPassword 'mezz'
+            storePassword 'mezz'
+        }
+    }
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.migeba"
+        minSdk 21
+        targetSdk 33
+        versionCode 7
+        versionName "7"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true //false by default - code optimizer
+            shrinkResources true // deleted by default
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation files('libs/mssql.jar')
+    implementation files('libs/posprintersdk.jar')
+    implementation 'com.github.evrencoskun:TableView:v0.8.9.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0-rc01'
+    implementation platform('com.google.firebase:firebase-bom:30.5.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.github.datalogic:datalogic-android-sdk:1.29'
+
+}

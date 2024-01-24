@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="column_header_height">40dp</dimen>
+    <dimen name="row_header_width">30dp</dimen>
+    <dimen name="cell_height">40dp</dimen>
+    <dimen name="text_size">12sp</dimen>
+
+    <!-- Overriding the default values of the tableView -->
+    <dimen name="default_row_header_width">30dp</dimen>
+    <dimen name="default_column_header_height">40dp</dimen>
+
+    <dimen name="mtrl_alert_dialog_background_inset_start">4dp</dimen>
+    <dimen name="mtrl_alert_dialog_background_inset_end">4dp</dimen>
+    <dimen name="mtrl_alert_dialog_background_inset_top">4dp</dimen>
+    <dimen name="mtrl_alert_dialog_background_inset_bottom">4dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <item type="dimen" name="dialog_min_width_major">65%</item>
+
+</resources>

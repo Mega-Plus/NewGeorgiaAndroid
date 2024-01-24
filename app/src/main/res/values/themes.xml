@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Migeba" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color. -->
+
+        <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="p">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <!-- Status bar color. -->
+        <!--        <item name="android:windowContentTransitions">true</item>-->
+        <item name="android:windowActivityTransitions">true</item>
+
+
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.Migeba.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Migeba.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Migeba.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

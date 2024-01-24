@@ -1,0 +1,303 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false">
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            style="?collapsingToolbarLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?collapsingToolbarLayoutMediumSize"
+            android:fitsSystemWindows="false"
+            app:collapsedTitleTextAppearance="@style/CollapsingHomeTitleAppearanceCollapsed"
+            app:expandedTitleMarginStart="30dp"
+            app:expandedTitleTextAppearance="@style/CollapsingHomeTitleAppearanceExpanded"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleCollapseMode="scale">
+
+            <View
+                android:id="@+id/click_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:elevation="0dp"
+                app:layout_collapseMode="pin"
+                app:title="მოდულები"
+                app:titleMarginStart="@dimen/m3_alert_dialog_icon_margin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginLeft="33dp"-->
+    <!--        android:layout_marginTop="40dp"-->
+    <!--        android:fontFamily="@font/mark_reg"-->
+    <!--        android:text="მოდულები"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:textStyle="bold" />-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:ignore="MissingPrefix">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/migeba_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="105dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#E7E0EC"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <TextView
+                            android:id="@+id/shared_element_migheba"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mark_med"
+                            android:text="მიღება"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/frameLayout"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <FrameLayout
+                            android:id="@+id/frameLayout"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:background="#DADCE0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="20dp"
+                                android:src="@drawable/ic_outline_migeba_24"
+                                app:tint="#9AA0A6" />
+                        </FrameLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/dalageba_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="105dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#E7E0EC"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mark_med"
+                            android:text="დალაგება"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/frameLayout3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <FrameLayout
+                            android:id="@+id/frameLayout3"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:background="#DADCE0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="27dp"
+                                android:src="@drawable/ic_outline_my_location_24"
+                                app:tint="#9AA0A6" />
+                        </FrameLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/shegroveba_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="105dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#E7E0EC"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mark_med"
+                            android:text="შეგროვება"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/frameLayout4"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <FrameLayout
+                            android:id="@+id/frameLayout4"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:background="#DADCE0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="27dp"
+                                android:src="@drawable/ic_baseline_receipt_long_24"
+                                app:tint="#9AA0A6" />
+                        </FrameLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/inventory_cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="105dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="#E7E0EC"
+                    app:cardCornerRadius="13dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="0dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mark_med"
+                            android:text="ინვენტარიზაცია"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/frameLayout2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <FrameLayout
+                            android:id="@+id/frameLayout2"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:background="#DADCE0"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="20dp"
+                                android:src="@drawable/ic_outline_inventory_24"
+                                app:tint="#9AA0A6" />
+                        </FrameLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settings_activity_button"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:onClick="OpenSettings"
+        android:padding="0dp"
+        app:elevation="5dp"
+        app:icon="@drawable/ic_settings"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconTint="@color/black"
+        app:rippleColor="@color/design_default_color_primary" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

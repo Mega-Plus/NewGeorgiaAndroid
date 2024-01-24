@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".migeba">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/mark_reg"
+        android:gravity="center"
+        android:text="შეგროვება"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/finish_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:contentDescription="@string/accessibility_migheba_save"
+        android:src="@drawable/ic_baseline_check_24"
+        android:text="დასრულება"
+        android:theme="@style/ThemeOverlay.Material3.FloatingActionButton.Tertiary"
+        app:icon="@drawable/ic_baseline_check_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/scanner_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="65dp"
+        android:contentDescription="@string/accessibility_migheba_save"
+        android:src="@drawable/ic_baseline_barcode_scanner"
+        android:text="ხელის სკანერი"
+        android:theme="@style/ThemeOverlay.Material3.FloatingActionButton.Tertiary" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp">
+
+        <ProgressBar
+            android:id="@+id/accept_progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-6dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+
+        <com.evrencoskun.tableview.TableView
+            android:id="@+id/tableview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="false"
+            app:allow_click_inside_cell="true"
+            app:allow_click_inside_column_header="true"
+            app:allow_click_inside_row_header="true"
+            app:selected_color="@color/backgroundcolor_tetriary" />
+
+        <ListView
+            android:id="@+id/lv_zednadebi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:descendantFocusability="blocksDescendants"
+            android:divider="#D6D6D6"
+            android:dividerHeight="1dp"
+            android:scrollingCache="false"
+            android:smoothScrollbar="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom"
+            android:background="#8A453D3F" />
+
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/zednadebi_fab"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="left|bottom"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="5dp"
+        android:contentDescription="@string/accessibility_migheba_zednadebi"
+        android:ellipsize="marquee"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:maxWidth="160dp"
+        android:paddingHorizontal="15dp"
+        android:singleLine="true"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_baseline_receipt_long_24"
+        app:iconPadding="5dp"
+        app:iconSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/productEditButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:ellipsize="marquee"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:paddingHorizontal="15dp"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/migheba_edit"
+        android:visibility="visible"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_outline_edit_24" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
