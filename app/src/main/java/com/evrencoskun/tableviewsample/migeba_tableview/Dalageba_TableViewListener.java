@@ -32,6 +32,7 @@ import static com.example.migeba.MainActivity.CONN_EXECUTE_SQL;
 import static com.example.migeba.MainActivity.CONN_RESULTSET_SQL;
 import static com.example.migeba.MainActivity.ConnectAndPrint;
 import static com.example.migeba.MainActivity.SELECTED_USER;
+import static com.example.migeba.MainActivity.USER_ID;
 import static com.example.migeba.MainActivity.getAppContext;
 import static com.example.migeba.Utils.DebugTools.print;
 
@@ -95,6 +96,8 @@ public class Dalageba_TableViewListener implements ITableViewListener {
     public static TableView mTableView;
     public static List<List<Migeba_Cell>> products_cache;
     public static StringBuilder changesQuery;
+    public static String LOCATION_SEARCH;
+    public static String LOCATION_CHANGE_QUERY;
     public static List<String> savedProducts = new ArrayList<>();
 
 
@@ -185,6 +188,8 @@ public class Dalageba_TableViewListener implements ITableViewListener {
         TextInputLayout inputsabechidraodenoba = mainAlertDialog.findViewById(R.id.card_edit_sabechdiraodenoba);
         TextInputLayout inputnumerusi = mainAlertDialog.findViewById(R.id.card_edit_numerusi);
 
+
+
 //        inputvada.setVisibility(View.GONE);
 //        inputraodenoba.setVisibility(View.GONE);
         inputmwarmoebeli.setVisibility(View.GONE);
@@ -210,7 +215,8 @@ public class Dalageba_TableViewListener implements ITableViewListener {
         Migeba_Cell g_p_id = (Migeba_Cell) mTableView.getAdapter().getCellItem(9, row);
 
         //SCANNER
-
+        g_id.setText(g_p_id.getData().toString());
+        System.out.println("aidi1 " + g_id.getText().toString());
         ExtendedFloatingActionButton scanner_button = v.findViewById(R.id.scanner_button_edit);
 
         scanner_button.setOnClickListener(new View.OnClickListener() {
@@ -385,12 +391,14 @@ public class Dalageba_TableViewListener implements ITableViewListener {
 
                 products_cache.set(row, rowItems);
                 SetTableViewAdapter(products_cache);
-                Edit_Card_Location(row + 1, context);
-
+                System.out.println("Lokacia " + loca_tv.getText().toString());
                 saveChanges(
-                        String.valueOf(row + 1),
+                        String.valueOf(row),
                         loca_tv.getText().toString(),
                         g_id.getText().toString());
+                Edit_Card_Location(row + 1, context);
+
+
 
 
                 new Handler().postDelayed(new Runnable() {
@@ -491,7 +499,6 @@ public class Dalageba_TableViewListener implements ITableViewListener {
 
                     products_cache.set(row, rowItems);
                     SetTableViewAdapter(products_cache);
-
                     saveChanges(
                             String.valueOf(row + 1),
                             loca_tv.getText().toString(),
@@ -824,15 +831,23 @@ public class Dalageba_TableViewListener implements ITableViewListener {
         savedProducts.add(row);
 
         changesQuery.append("UPDATE A_PLUS.dbo.GET_EDIT set " +
-                " P_LOC_ID = '" + P_LOC_ID + "'" +
+                " P_LOC_ID = '" + P_LOC_ID + "'," +
                 " where g_id = '" + g_id + "' and G_ZDN = '" + Dalageba.zednadebi_id + "'" +
-                "\n" +
+                "\n UPDATE A_PLUS.dbo.GET SET " +
+                        " G_LOC = (SELECT L_ID FROM A_PLUS.dbo.LOCATION WHERE L_NAME = '" + P_LOC_ID + "')" +
+                        " WHERE G_ID = '" + g_id + "'" +
                 "if @@rowcount = 0 and @@error = 0\n" +
                 "insert into A_PLUS.dbo.GET_EDIT (G_SERIA, G_QUANT, G_EXP, g_id, G_ZDN) VALUES (NULL,NULL,NULL,'" + g_id + "' ,'" + Dalageba.zednadebi_id + "') \n" +
                 "UPDATE A_PLUS.dbo.GET_EDIT set " +
-                " P_LOC_ID = '" + P_LOC_ID + "'" +
-                " where g_id = '" + g_id + "'" +
-                "\n");
+                " P_LOC_ID = '" + P_LOC_ID + "'," +
+                " where g_id = '" + g_id + "';" +
+                "\n UPDATE A_PLUS.dbo.GET SET " +
+                " G_LOC = (SELECT L_ID FROM A_PLUS.dbo.LOCATION WHERE L_NAME = '" + P_LOC_ID + "')" +
+                " WHERE G_ID = '" + g_id + "'");
+
+//        LOCATION_SEARCH = "SELECT L_ID FROM A_PLUS.dbo.LOCATION WHERE L_NAME = '" + P_LOC_ID + "'";
+//        LOCATION_CHANGE_QUERY = "UPDATE A_PLUS.dbo.GET SET G_LOC = "
+
         /*
             [G_SERIA]
             [G_EXP]

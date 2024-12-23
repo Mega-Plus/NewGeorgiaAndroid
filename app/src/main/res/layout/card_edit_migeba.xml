@@ -219,11 +219,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:hint="მწარმოებელი">
 
-                        <com.google.android.material.textfield.TextInputEditText
+<!--                        <com.google.android.material.textfield.TextInputEditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:singleLine="true" />-->
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/autoComplete_mwarmoebeli"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="55dp"
                             android:singleLine="true" />
                     </com.google.android.material.textfield.TextInputLayout>
 

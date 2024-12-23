@@ -68,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static String USER_ID = "";
-    public static String conn_ip = "192.168.1.140";
-//    public static String conn_ip = "192.168.1.1";
+//    public static String conn_ip = "192.168.1.111";
+    public static String conn_ip = "192.168.1.1";
     public static String port = "1433";
     public static String Classes = "net.sourceforge.jtds.jdbc.Driver";
     public static String username = "sa";
-    public static String password = "@Irakli24";
-//    public static String password = "12Niangi";
+//    public static String password = "@Irakli24";
+    public static String password = "12Niangi";
     public static String url = "jdbc:jtds:sqlserver://" + conn_ip + ":" + port + ";databaseName=A_PLUS;user=" + username + ";password=" + password;
 
     private static final String API_URL = "https://vercel-api-hazel.vercel.app/modulesUpdates.json";

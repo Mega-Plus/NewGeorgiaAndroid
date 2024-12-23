@@ -6,6 +6,7 @@ import static com.example.migeba.MainActivity.CONN_EXECUTE_SQL;
 import static com.example.migeba.MainActivity.CONN_RESULTSET_SQL;
 import static com.example.migeba.MainActivity.ConnectAndPrint;
 import static com.example.migeba.MainActivity.SELECTED_USER;
+import static com.example.migeba.MainActivity.USER_ID;
 import static com.example.migeba.MainActivity._parseTime;
 import static com.example.migeba.MainActivity.getAppContext;
 import static com.example.migeba.Utils.DebugTools.print;
@@ -70,11 +71,17 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class migeba extends AppCompatActivity {
+
+    public static MigebaModel migebaModel = new MigebaModel();
     Context context;
 
     static MaterialButton productEditButton;
@@ -276,6 +283,13 @@ public class migeba extends AppCompatActivity {
         TextInputLayout inputsabechidraodenoba = alertDialog.findViewById(R.id.card_edit_sabechdiraodenoba);
         TextInputLayout inputnumerusi = alertDialog.findViewById(R.id.card_edit_numerusi);
         TextView expectedText = alertDialog.findViewById(R.id.expectedText);
+        AutoCompleteTextView inputMwarmoebeli = alertDialog.findViewById(R.id.autoComplete_mwarmoebeli);
+
+        String[] manufacturers = get_manugacturers();
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getAppContext(), android.R.layout.simple_dropdown_item_1line, manufacturers);
+        inputMwarmoebeli.setThreshold(1);
+        inputMwarmoebeli.setAdapter(arrayAdapter);
 
 
         TextView seria = alertDialog.findViewById(R.id.location_name);
@@ -780,6 +794,26 @@ public class migeba extends AppCompatActivity {
         });
     }
 
+    private static String[] get_manugacturers() {
+        String manufacturer_query = "SELECT MAN_name FROM manufacturer;";
+        ResultSet manufacturer_resultset = CONN_RESULTSET_SQL(manufacturer_query);
+
+        ArrayList<String> manufacturers = new ArrayList<>();
+        try {
+            while (manufacturer_resultset.next()) {
+                String manufacturer = manufacturer_resultset.getString("MAN_name");
+                manufacturers.add(manufacturer);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        String[] result = manufacturers.toArray(new String[0]);
+
+        return result;
+
+    }
+
     public static void hideKeyboardFrom(Context context, View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -850,14 +884,37 @@ public class migeba extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 ///SET FINISHED
                 String deleteQuery = "DELETE FROM [A_PLUS].[dbo].[GET_EDIT] WHERE G_ZDN = '" + zednadebi_fab.getText().toString() + "'";
-
-
+//                String updateQuery = "UPDATE A_PLUS.dbo.GET_EDIT SET CREATOR = 'OLD' WHERE G_ZDN = '" + zednadebi_fab.getText().toString() + "'";
                 CONN_EXECUTE_SQL(deleteQuery);
+
+
+                    LocalDateTime currentDate = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMddHHmm");
+                    String formatedDate = currentDate.format(formatter);
+                    System.out.println("Formatted Date and Time: " + formatedDate);
+
+
                 String finishQuery = "update [A_PLUS].[dbo].[GET] " +
-                        "SET G_ACT = 2 " +
+                        "SET G_ACT = 2 ," +
+                        "G_U_ID = '" + USER_ID + "'," +
+                        "G_TIME2 = '" + formatedDate + "' " +
                         "where G_ZDN = '" + zednadebi_fab.getText().toString() + "'";
 
+
+                String insert_query = "insert into [A_PLUS].[dbo].[GET](G_SERIA, G_EXP, G_QUANT, G_LOC, G_TIME2, G_U_ID, CREATOR)" +
+                        "VALUES(" +
+                        "'" + migebaModel.getMigeba_seria() + "'," +
+                        "'" + migebaModel.getMigeba_vada() + "'," +
+                        "'" + migebaModel.getMigeba_raodenoba() + "'," +
+                        "'" + migebaModel.getMigeba_location() + "'," +
+                        "'" + formatedDate + "'," +
+                        "'" + Integer.parseInt(USER_ID) + "'," +
+                        "'warehouse'" +
+                        ")";
+
+
                 CONN_EXECUTE_SQL(finishQuery);
+//                CONN_EXECUTE_SQL(insert_query);
                 String changequerylast = "";
                 for (String str : changesQuery
                 ) {
@@ -1047,32 +1104,39 @@ public class migeba extends AppCompatActivity {
             savedProducts.add(row);
         }
 
-        changesQuery.add("UPDATE A_PLUS.dbo.GET_EDIT set " +
-                " G_SERIA = '" + G_SERIA + "'," +
-                " G_EXP = '" + G_EXP + "'," +
-                " G_QUANT = '" + G_QUANT + "'," +
-                " MAN_name = '" + MAN_name + "'," +
-                " P_ERT = '" + P_ERT + "'," +
-                " MAN_Q_name = '" + geoToEn(MAN_Q_name) + "'," +
-                " P_TEMP = '" + (P_TEMP) + "'," +
-                " P_NUMERUS = '" + (P_NUMERUS) + "'," +
-                " P_LOC_ID = '" + P_LOC_ID + "'" +
-                " where g_id = '" + g_id + "' and G_ZDN = '" + zednadebi_fab.getText().toString() + "'" +
-                "\n" +
-                "if @@rowcount = 0 and @@error = 0\n" +
-                "insert into A_PLUS.dbo.GET_EDIT (G_SERIA, P_TEMP, G_QUANT, G_EXP, g_id, G_ZDN) VALUES (NULL,NULL,NULL,NULL,'" + g_id + "' ,'" + zednadebi_fab.getText().toString() + "') \n" +
-                "UPDATE A_PLUS.dbo.GET_EDIT set " +
-                " G_SERIA = '" + G_SERIA + "'," +
-                " G_EXP = '" + G_EXP + "'," +
-                " G_QUANT = '" + G_QUANT + "'," +
-                " MAN_name = '" + (MAN_name) + "'," +
-                " P_TEMP = '" + (P_TEMP) + "'," +
-                " P_NUMERUS = '" + (P_NUMERUS) + "'," +
-                " P_ERT = '" + P_ERT + "'," +
-                " MAN_Q_name = '" + geoToEn(MAN_Q_name) + "'," +
-                " P_LOC_ID = '" + P_LOC_ID + "'" +
-                " where g_id = '" + g_id + "'" +
-                "\n");
+//        changesQuery.add("insert into A_PLUS.dbo.GET_EDIT (G_SERIA, P_TEMP, G_QUANT, G_EXP, g_id, G_ZDN) VALUES (NULL,NULL,NULL,NULL,'" + g_id + "' ,'" + zednadebi_fab.getText().toString() + "') \n" +
+//                "UPDATE A_PLUS.dbo.GET_EDIT set " +
+//                " G_SERIA = '" + G_SERIA + "'," +
+//                " G_EXP = '" + G_EXP + "'," +
+//                " G_QUANT = '" + G_QUANT + "'," +
+//                " MAN_name = '" + (MAN_name) + "'," +
+//                " P_TEMP = '" + (P_TEMP) + "'," +
+//                " P_NUMERUS = '" + (P_NUMERUS) + "'," +
+//                " P_ERT = '" + P_ERT + "'," +
+//                " MAN_Q_name = '" + geoToEn(MAN_Q_name) + "'," +
+//                " P_LOC_ID = '" + P_LOC_ID + "'," +
+//                " CREATOR = 'warehouse'" +
+//                " where g_id = '" + g_id + "'" +
+//                "\n");
+
+        changesQuery.add("insert into A_PLUS.dbo.GET_EDIT (g_id, G_ZDN, G_SERIA, G_EXP, G_QUANT, MAN_name, P_TEMP, P_NUMERUS, P_ERT, MAN_Q_name, P_LOC_ID, CREATOR) VALUES(" +
+                "'" + g_id + "', " +
+                "'" + zednadebi_fab.getText().toString() + "', " +
+                "'" + G_SERIA + "', " +
+                "'" + G_EXP + "', " +
+                "'" + G_QUANT + "', " +
+                "'" + MAN_name + "', " +
+                "'" + P_TEMP + "', " +
+                "'" + P_NUMERUS + "', " +
+                "'" + P_ERT + "', " +
+                "'" + geoToEn(MAN_Q_name) + "', " +
+                "'" + P_LOC_ID + "', " +
+                "'warehouse')");
+
+//
+//        changesQuery.add(String.format("INSERT INTO A_PLUS.dbo.GET_EDIT (G_SERIA, G_EXP, G_QUANT, MAN_name, P_TEMP, P_NUMERUS, P_ERT, MAN_Q_name, P_LOC_ID, g_id, G_ZDN, CREATOR) " +
+//                        "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+//                        G_SERIA, G_EXP, G_QUANT, MAN_name, P_TEMP, P_NUMERUS, P_ERT, geoToEn(MAN_Q_name), P_LOC_ID, g_id, zednadebi_fab.getText().toString(), "warehouse"));
 
         changesGIds.add(g_id);
 
@@ -1277,7 +1341,7 @@ public class migeba extends AppCompatActivity {
     private static List<List<Migeba_Cell>> getProducts(String zednadebi_id) {
         List<List<Migeba_Cell>> list = new ArrayList<>();
 
-        ResultSet rs2 = CONN_RESULTSET_SQL("DELETE FROM [A_PLUS].[dbo].[GET_EDIT] where G_ZDN = '" + zednadebi_id + "'\nSELECT G_P_ID,G_ID,G_SERIA,G_EXP,G_QUANT,G_PRICE,G_D_ID,MAN_Q_name,\n" +
+        ResultSet rs2 = CONN_RESULTSET_SQL("SELECT G_P_ID,G_ID,G_SERIA,G_EXP,G_QUANT,G_PRICE,G_D_ID,MAN_Q_name,\n" +
                 "[MAN_name],G_MAN_ID,G_MAN_Q_ID,G_ZDN,G_TIME,G_BAR1,P_ID,P_NAME,P_FORM,P_ERT,L_NAME,P_LOC_ID\n" +
                 "FROM [A_PLUS].[dbo].[GET]  as t1\n" +
                 "left join A_PLUS.dbo.PRODUCT on P_ID=g_p_id \n" +

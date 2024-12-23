@@ -538,12 +538,15 @@ public class Inventarizacia extends AppCompatActivity {
         try {
             int i = 0;
             while (rs2.next()) {
+
+                String AG_ANAGC_VALUE = rs2.getString("AG_ANAGC") != null ? DebugTools.doubleStringToIntString(rs2.getString("AG_ANAGC")) : "null";
+
                 i++;
                 List<Migeba_Cell> migebaCellList = new ArrayList<>();
                 Migeba_Cell P_NAME = new Migeba_Cell(String.valueOf(i), TOGEO(rs2.getString("P_NAME")));
                 Migeba_Cell P_LOC_ID = new Migeba_Cell(String.valueOf(i), rs2.getString("P_LOC_ID"));
                 Migeba_Cell AG_QUANT = new Migeba_Cell(String.valueOf(i), DebugTools.doubleStringToIntString(rs2.getString("AG_QUANT")));
-                Migeba_Cell AG_ANAGC = new Migeba_Cell(String.valueOf(i), DebugTools.doubleStringToIntString(rs2.getString("AG_ANAGC")));
+                Migeba_Cell AG_ANAGC = new Migeba_Cell(String.valueOf(i), AG_ANAGC_VALUE);
                 Migeba_Cell AG_GLOC = new Migeba_Cell(String.valueOf(i), "");
                 Migeba_Cell G_SERIA = new Migeba_Cell(String.valueOf(i), TOGEO(rs2.getString("G_SERIA")));
                 try {

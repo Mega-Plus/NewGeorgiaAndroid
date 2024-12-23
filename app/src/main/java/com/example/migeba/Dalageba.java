@@ -62,6 +62,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -250,7 +251,7 @@ public class Dalageba extends AppCompatActivity {
         Inventory_AsyncInitializeTableView();
     }
 
-    public static void uploadDalagebaToServer() {
+    public static void uploadDalagebaToServer() throws SQLException {
         if (changesQuery == null && changesQuery.isEmpty()) {
             return;
         }
@@ -261,6 +262,9 @@ public class Dalageba extends AppCompatActivity {
         CONN_EXECUTE_SQL(finishQuery);
 
         CONN_EXECUTE_SQL(Dalageba_TableViewListener.changesQuery.toString());
+//        ResultSet rs = CONN_RESULTSET_SQL(Dalageba_TableViewListener.LOCATION_SEARCH);
+//        System.out.println("Result: " + rs.getString("0"));
+//        CONN_EXECUTE_SQL(Dalageba_TableViewListener.LOCATION_CHANGE_QUERY);
         activity.finish();
     }
 
@@ -272,7 +276,11 @@ public class Dalageba extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 //upload inventarizacia to server
-                uploadDalagebaToServer();
+                try {
+                    uploadDalagebaToServer();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
         mb.setNegativeButton("არა", new DialogInterface.OnClickListener() {
@@ -441,19 +449,20 @@ public class Dalageba extends AppCompatActivity {
         List<List<Migeba_Cell>> list = new ArrayList<>();
         if (dalageba) {
 
-
-            ResultSet rs2 = CONN_RESULTSET_SQL("" +
+            String qu = "" +
                     " SELECT G_P_ID,G_ID,G_SERIA,G_EXP,G_QUANT,G_PRICE,G_D_ID,MAN_Q_name,\n" +
                     "    [MAN_name],G_MAN_ID,G_MAN_Q_ID,G_ZDN,G_TIME,G_BAR1,P_ID,P_NAME,P_FORM,P_ERT,L_NAME,P_LOC_ID\n" +
                     "    FROM [A_PLUS].[dbo].[GET]  as t1\n" +
                     "    left join A_PLUS.dbo.PRODUCT on P_ID=g_p_id \n" +
                     "    left join A_PLUS.dbo.manufacturer_Q on [G_MAN_Q_ID]=[MAN_Q_ID]\n" +
                     "     left join A_PLUS.dbo.manufacturer on [G_MAN_Q_ID] = MAN_ID\n" +
-                    "     outer apply (SELECT TOP 1 [G_LOC]  FROM [A_PLUS].[dbo].[GET] where  G_SERIA=t1.G_SERIA and G_P_ID=t1.G_P_ID and G_ID!=t1.G_ID order by G_TIME desc) as t4\n" +
+                    "     outer apply (SELECT TOP 1 [G_LOC]  FROM [A_PLUS].[dbo].[GET] where  G_SERIA=t1.G_SERIA and G_P_ID=t1.G_P_ID order by G_TIME desc) as t4\n" +
                     "    \n" +
                     "     left join A_PLUS.dbo.LOCATION\n" +
                     "     on L_ID = t4.G_LOC\n" +
-                    "      where G_ZDN = '" + zednadebi_id + "' order by G_ID");
+                    "     where G_ZDN = '" + zednadebi_id + "' order by G_ID";
+            ResultSet rs2 = CONN_RESULTSET_SQL(qu);
+
             try {
                 int i = 0;
                 while (rs2.next()) {

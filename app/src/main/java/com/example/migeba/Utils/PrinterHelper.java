@@ -29,7 +29,8 @@ public class PrinterHelper {
                 PrintOnPOS(barcode, headerText, bottomLeft1, bottomLeft2, bottomRightText);
             } else {
 
-                PrintBarcode(barcode, headerText, bottomLeft1);
+//                PrintBarcode(barcode, headerText, bottomLeft1);
+                System.out.println();
 
             }
 
